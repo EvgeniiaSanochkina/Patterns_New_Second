@@ -10,7 +10,7 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static data.DataGenerator.Registration.getRegisteredUser;
+import static data.DataGenerator.Registration.getRegisteredUser; // При импортировании статических методов, к ним можно обращаться как будто они определены в этом же классе
 import static data.DataGenerator.Registration.getUser;
 import static data.DataGenerator.getRandomLogin;
 import static data.DataGenerator.getRandomPassword;
