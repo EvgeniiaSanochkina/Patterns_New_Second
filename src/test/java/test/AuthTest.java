@@ -1,6 +1,7 @@
 package test;
 
 import com.codeborne.selenide.Condition;
+import data.DataGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,8 @@ class AuthTest {
     @DisplayName("Should successfully login with active registered user")
     void shouldSuccessfulLoginIfRegisteredActiveUser() {
         open("http://localhost:9999");
-        var registeredUser = getRegisteredUser("active");
+        DataGenerator.RegistrationDto registeredUser = getRegisteredUser("active");
+        // или var registeredUser = getRegisteredUser("active");
         $("[data-test-id=\"login\"] input").sendKeys(registeredUser.getLogin());
         $("[data-test-id=\"password\"] input").sendKeys(registeredUser.getPassword());
         $("button[role = 'button']").click();
