@@ -34,7 +34,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Run SUT
-        run:  java -jar app-ibank.jar & sleep 10
+        run:  java -jar app-ibank.jar -P:profile=test & sleep 10
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build witch Gradle
