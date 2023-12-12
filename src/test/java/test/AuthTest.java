@@ -18,14 +18,15 @@ import static data.DataGenerator.getRandomPassword;
 
 class AuthTest {
 
-    @BeforeEach
+    /*@BeforeEach
     void setup() {
         open("http://localhost:9999");
-    }
+    }*/
 
     @Test
     @DisplayName("Should successfully login with active registered user")
     void shouldSuccessfulLoginIfRegisteredActiveUser() {
+        open("http://localhost:9999");
         var registeredUser = getRegisteredUser("active");
         $("[data-test-id=\"login\"] input").sendKeys(registeredUser.getLogin());
         $("[data-test-id=\"password\"] input").sendKeys(registeredUser.getPassword());
@@ -37,6 +38,7 @@ class AuthTest {
     @Test
     @DisplayName("Should get error message if login with not registered user")
     void shouldGetErrorIfNotRegisteredUser() {
+        open("http://localhost:9999");
         var notRegisteredUser = getUser("active");
         $("[data-test-id=\"login\"] input").sendKeys(notRegisteredUser.getLogin());
         $("[data-test-id=\"password\"] input").sendKeys(notRegisteredUser.getPassword());
@@ -49,6 +51,7 @@ class AuthTest {
     @Test
     @DisplayName("Should get error message if login with blocked registered user")
     void shouldGetErrorIfBlockedUser() {
+        open("http://localhost:9999");
         var blockedUser = getRegisteredUser("blocked");
         $("[data-test-id=\"login\"] input").sendKeys(blockedUser.getLogin());
         $("[data-test-id=\"password\"] input").sendKeys(blockedUser.getPassword());
@@ -60,6 +63,7 @@ class AuthTest {
     @Test
     @DisplayName("Should get error message if login with wrong login")
     void shouldGetErrorIfWrongLogin() {
+        open("http://localhost:9999");
         var registeredUser = getRegisteredUser("active");
         var wrongLogin = getRandomLogin();
         $("[data-test-id=\"login\"] input").sendKeys(wrongLogin);
@@ -72,6 +76,7 @@ class AuthTest {
     @Test
     @DisplayName("Should get error message if login with wrong password")
     void shouldGetErrorIfWrongPassword() {
+        open("http://localhost:9999");
         var registeredUser = getRegisteredUser("active");
         var wrongPassword = getRandomPassword();
         $("[data-test-id=\"login\"] input").sendKeys(registeredUser.getLogin());
